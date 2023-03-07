@@ -1,0 +1,35 @@
+/* pages/tab-user/tab-user.wxss */
+@import '../../styles/var.less';
+
+.user-header {
+  position: relative;
+  &-bg {
+    width: 750rpx;
+    height: 316rpx;
+  }
+  &-container {
+    position: absolute;
+    width: 750rpx;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 60rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &-uname {
+    .font-size-l();
+    color: @color-gray;
+    margin-top: 10rpx;
+  }
+}
+
+// 矫正进度
+.user-jzjd {
+  display: flex;
+  justify-content: space-between;
+  .font-size-s();
+  .font-color-light();
+}

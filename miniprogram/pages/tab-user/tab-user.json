@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "t-progress": "tdesign-miniprogram/progress/progress",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "avatar": "../../components/avatar/avatar"
+  },
+  "navigationStyle": "custom"
+}

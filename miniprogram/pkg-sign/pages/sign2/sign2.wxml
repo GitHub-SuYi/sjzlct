@@ -1,0 +1,45 @@
+<!-- 主动签到 pkg-sign/pages/sign2/sign2.wxml-->
+<page-meta>
+  <navigation-bar title="主动签到" />
+</page-meta>
+<view class="page-container">
+  <view class="sign-header card-round">
+    <view class="sign-header-left">
+      <avatar avatar-class="sign-header-avatar" src="{{userAvatar}}" />
+      <view class="sign-header-info">
+        <text class="sign-header-info-name">{{userName}}</text>
+        <view class="sign-header-info-tip">
+          <text>可随时主动签到</text>
+        </view>
+      </view>
+    </view>
+    <view class="sign-header-right">
+      <t-button t-class-icon="sign-header-right-icon" icon="chart-pie" size="small" variant="outline" catchtap="goSignCount">统计</t-button>
+    </view>
+  </view>
+  <view class="sign-main card-round">
+    <!-- 签到组件 -->
+    <sign
+      title="主动签到"
+      disabled="{{!enableSign}}"
+      face-event="onSign2FaceSuccess"
+      bind:sign="onTapSign"
+      bind:time-changed="onTimeChanged"
+    />
+    <!-- 签到备注 -->
+    <view class="sign-remark">
+      <view class="sign-remark-preset">
+        <button class="btn" size="mini" data-text="忘记打卡" catchtap="setPresetRemark">忘记打卡</button>
+        <button class="btn" size="mini" data-text="请假" catchtap="setPresetRemark">请假</button>
+        <button class="btn" size="mini" data-text="要求主动签到" catchtap="setPresetRemark">要求主动签到</button>
+        <button class="btn" size="mini" data-text="无法打卡" catchtap="setPresetRemark">无法打卡</button>
+      </view>
+      <textarea
+        class="sign-remark-input"
+        placeholder="选择上方预设的签到备注或自行填写"
+        placeholder-style="font-size: 28rpx"
+        model:value="{{remark}}"
+      ></textarea>
+    </view>
+  </view>
+</view>

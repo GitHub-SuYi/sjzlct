@@ -1,0 +1,205 @@
+@import '../../styles/var.less';
+
+/* tab:首页 */
+.banner{
+  width: 750rpx;
+  height: 350rpx;
+  &-img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.fn-button {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .around-shadow();
+  &-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px 0;
+    background-color: #FFFFFF;
+    &:active {
+      background-color: @color-gray-light;
+    }
+    &-icon {
+      height: 56rpx;
+      align-self: center;
+    }
+    &-text {
+      .font-color();
+      text-align: center;
+      margin-top: 18rpx;
+      .font-size();
+    }
+  }
+}
+.card {
+  background-color: #FFFFFF;
+  border-radius: 14rpx;
+  .around-shadow();
+  &-header {
+		height: 76rpx;
+    padding: 0 20rpx;
+    display: flex;
+		flex-direction: row;
+		align-items: center;
+    border-bottom: 1px solid @color-gray-light;
+    &-icon {
+      height: 36rpx;
+    }
+    &-text {
+      .font-color-dark();
+      .font-size-l();
+      margin-left: 8px;
+    }
+  }
+  &-body {
+    padding: 20rpx;
+  }
+  &-footer {
+    height: 64rpx;
+    padding: 0 20rpx;
+    display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+    border-top: 1px solid @color-gray-light;
+    .font-size-s();
+    .font-color-light3();
+  }
+}
+
+.sign-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-start {
+      .font-size-s();
+      .font-color-light2();
+    }
+    &-end {
+      .font-size-s();
+      color: @color-gray-dark;
+      margin-top: 2rpx;
+    }
+  }
+}
+.sign-bar {
+  height: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: 5px 0;
+  &-progress {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 8rpx;
+    overflow: hidden;
+    &-item {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      &-half {
+        flex: 1;
+        height: 10rpx;
+        background-color: fadeout(@color-primary, 80%);
+        &.active {
+          background-color: @color-primary;
+        }
+      }
+    }
+  }
+  &-dot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    &-item {
+      width: 28rpx;
+      height: 28rpx;
+      border: 6rpx solid @color-gray-light;
+      border-radius: 20rpx;
+      background-color: #FFFFFF;
+      &.active {
+        border-color: @color-primary;
+        .around-shadow(@color-primary);
+      }
+      &.error {  border-color: @color-error; }
+      &.success {  border-color: @color-success; }
+    }
+  }
+}
+.sign-state {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  &-text {
+    .font-size-s();
+    .font-color-light2();
+    min-width: 56rpx;
+    text-align: center;
+    &.active { color: @color-primary; }
+    &.error { color: @color-error; }
+    &.success { color: @color-success; }
+  }
+}
+
+.sign-msg {
+  margin-top: 16rpx;
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 4rpx 0;
+  }
+  &-dot {
+    width: 6rpx;
+    height: 6rpx;
+    background-color: @color-gray-light;
+    border-radius: 3rpx;
+    align-self: center;
+    margin-right: 16rpx;
+  }
+  &-box {
+    flex: 1;
+    &-text {
+      .font-size-s();
+      .font-color-light();
+      // line-height: 28px;
+      &.lg {
+        .font-size-xl();
+        line-height: 36rpx;
+        .font-color-dark2();
+        font-weight: bold;
+      }
+    }
+  }
+  &-btn {
+    width: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    &-text {
+      .font-size-s();
+      line-height: 28rpx;
+      color: @color-primary;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<view>
+  <view class="user-header">
+    <image class="user-header-bg" src="../../assets/tab-user/navigation-bg.jpg" mode="aspectFill"></image>
+    <view class="user-header-container">
+      <avatar src="{{userinfo.avatar}}" />
+      <text class="user-header-uname">{{userinfo.xm}}</text>
+    </view>
+  </view>
+  <view class="page-container">
+    <!-- <view class="_rb">
+      <button bindtap="loadImg">图片base64</button>
+    </view> -->
+    <view class="card-round" wx:if="{{!userinfo.isGuest}}">
+      <t-progress percentage="{{userinfo.jzPercent}}" stroke-width="10px" label="{{false}}"></t-progress>
+      <view class="user-jzjd">
+        <text>已监管：{{userinfo.jzDays}}天</text>
+        <text>截止于：{{userinfo.jzFinishDate}}</text>
+      </view>
+    </view>
+    <view class="card-round">
+      <t-cell title="矫正编号" note="{{userinfo.jzbh}}" />
+      <t-cell title="身份证号" note="{{userinfo.sfzh}}" />
+      <t-cell title="机构名称" note="{{userinfo.jgmc}}" />
+      <t-cell title="面部图像" arrow hover bordered="{{false}}" catchtap="lookFaceImg" />
+      <!-- <t-cell title="人脸扫描" note="{{camera}}"  arrow hover catchtap="setCamera" /> -->
+    </view>
+    <view class="card-round">
+      <t-cell title="检查更新" arrow hover catchtap="checkVersion" />
+      <t-cell title="关于我们" bordered="{{false}}" arrow hover catchtap="goAboutUs" />
+    </view>
+    <view class="user-footer">
+      <t-button wx:if="{{userinfo.isGuest}}" theme="primary" size="large" variant="plain" block catchtap="goLogin">登 录</t-button>
+      <t-button wx:else theme="danger" size="large" variant="plain" block catchtap="logout">退出登录</t-button>
+    </view>
+  </view>
+</view>

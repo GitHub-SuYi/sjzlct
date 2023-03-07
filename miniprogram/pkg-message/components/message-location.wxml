@@ -1,0 +1,7 @@
+<!--pkg-message/components/message-location.wxml-->
+<view class="lct" hover-class="lct-active" bindtap="openLocation">
+  <view class="lct-addr">
+    <text>{{address}}</text>
+  </view>
+  <image class="lct-map" src="{{mapSrc}}" mode="aspectFill" lazy-load />
+</view>

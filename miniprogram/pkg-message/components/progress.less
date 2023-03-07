@@ -1,0 +1,26 @@
+/* pkg-message/components/progress.wxss */
+// 下载进度
+.message-progress {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // background-color: rgba(0, 0, 0, .25);
+  font-size: 22rpx;
+  text-shadow: #000 0 0 3px;
+  color: #ffffff;
+  &-bar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    // background-color: rgba(255, 255, 255, .35);
+    background-color: rgba(0, 0, 0, .1);
+    transition: width .2s ease;
+  }
+}

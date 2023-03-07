@@ -1,0 +1,27 @@
+<page-meta>
+  <navigation-bar title="公告详情" />
+</page-meta>
+
+<view class="page-container">
+  <view class="head-box">
+    <text class="title">{{title}}</text>
+    <view class="company">
+      <text>{{jgmc}}</text>
+      <text>{{time}}</text>
+    </view>
+  </view>
+  <view class="rich-text-box">
+    <rich-text nodes="{{content}}"></rich-text>
+  </view>
+  <view class="accessory-box">
+    <view class="accessory-title">附件:</view>
+    <view class="accessory-item" wx:for="{{imgList}}" wx:key="id" data-index="{{index}}" catchtap="previewImage">
+      <t-icon t-class="file-icon" name="arrow-down-rectangle" size="26rpx" color="#9D9D9D"/>
+      <text class="file-name">{{item.fileName}}</text>
+    </view>
+    <view class="accessory-item" wx:for="{{fileList}}" wx:key="id" data-file="{{item.fileUrl}}" catchtap="previewFile">
+      <t-icon t-class="file-icon" name="arrow-down-rectangle" size="26rpx" color="#9D9D9D"/>
+      <text class="file-name">{{item.fileName}}</text>
+    </view>
+  </view>
+</view>

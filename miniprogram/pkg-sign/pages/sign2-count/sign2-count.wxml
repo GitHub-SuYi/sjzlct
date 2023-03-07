@@ -1,0 +1,40 @@
+<page-meta>
+  <navigation-bar title="主动签到统计" />
+</page-meta>
+<view class="page-container">
+  <view class="head-box" id="header">
+    <text class="time">本月累计签到 {{total}} 次</text>
+    <view class="calendar" catchtap="showPicker">
+      <text>{{ monthText }}</text>
+      <t-icon name="chevron-down" size="44rpx" color="#000"/>
+    </view>
+  </view>
+  <view class="data-card-box">
+    <view class="card-item-box" wx:for="{{list}}" wx:key="id" id="id-{{index}}">
+      <view class="item-time">
+        <t-icon class="item-icon" name="time" size="26rpx" color="#999"/>
+        <text>{{item.signTime}}</text>
+      </view>
+      <view class="item-time">
+        <t-icon class="item-icon" name="location" size="26rpx" color="#999"/>
+        <text>{{item.address || '未知地区'}}</text>
+      </view>
+      <view class="item-time">
+        <t-icon class="item-icon" name="user-clear" size="26rpx" color="#999"/>
+        <text>{{item.remark}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 月份选择器 -->
+  <t-date-time-picker
+    title="选择月份"
+    visible="{{monthVisible}}"
+    mode="month"
+    start="{{minMonth}}"
+    end="{{maxMonth}}"
+    value="{{maxMonth}}"
+    format="{{monthFormat}}"
+    bindchange="onSelectMonth"
+    bindcancel="closePicker"
+  />
+</view>

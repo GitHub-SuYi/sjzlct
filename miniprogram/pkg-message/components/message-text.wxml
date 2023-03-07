@@ -1,0 +1,4 @@
+<!--pkg-message/components/message-text.wxml-->
+<view class="box {{mine ? 'mine' : ''}}">
+  <text user-select>{{text}}</text>
+</view>

@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-steps": "tdesign-miniprogram/steps/steps",
+    "t-step-item": "tdesign-miniprogram/steps/step-item",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "calendar": "../../../../components/calendar/calendar"
+  }
+}

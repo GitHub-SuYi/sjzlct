@@ -1,0 +1,11 @@
+<!--pkg-message/components/message-image.wxml-->
+<image
+  class="img"
+  style="{{sizeStyle}}"
+  src="{{imageSrc}}"
+  mode="{{imageMode}}"
+  lazy-load
+  show-menu-by-longpress
+  binderror="{{imageLoadErrorFn}}"
+  bindload="{{imageLoadSuccessFn}}"
+/>

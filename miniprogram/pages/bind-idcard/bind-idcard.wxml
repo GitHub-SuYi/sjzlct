@@ -1,0 +1,21 @@
+<!--pages/bind-idcard/bind-idcard.wxml-->
+<view class="page-container">
+  <t-input
+    type="idcard"
+    label="身份证"
+    size="medium"
+    placeholder="请输入身份证号码并绑定"
+    focus
+    bind:change="onIdCardChanged"
+  />
+  <t-button
+    t-class="btn"
+    theme="primary"
+    disabled="{{!isIdCard}}"
+    size="large"
+    block
+    bind:tap="bindIdCard"
+  >
+    绑定
+  </t-button>
+</view>

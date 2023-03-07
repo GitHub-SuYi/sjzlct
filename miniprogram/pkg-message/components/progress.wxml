@@ -1,0 +1,6 @@
+<!--pkg-message/components/progress.wxml-->
+<view class="message-progress">
+  <view class="message-progress-bar" style="{{'width:' + value + '%'}}"></view>
+  <text>{{value + '%'}}</text>
+  <text>{{label}}</text>
+</view>

@@ -1,0 +1,50 @@
+/* pages/tab-sign/sign.wxss */
+// 签到组件：圆形签到按钮、倒计时等
+@import "../../styles/var.less";
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-btn {
+    width: 250rpx;
+    height: 250rpx;
+    border-radius: 125rpx;
+    background: linear-gradient(lighten(@color-success, 20%), @color-success);
+    .around-shadow(@color-success);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    &.disabled {
+      background: linear-gradient(@color-gray-dark, darken(@color-gray-dark, 10%));
+      .around-shadow(@color-gray-dark);
+      &:active {
+        background: linear-gradient(darken(@color-gray-dark, 10%), darken(@color-gray-dark, 20%));
+      }
+    }
+    &:active {
+      background: linear-gradient(@color-success, darken(@color-success, 10%));
+    }
+    &-text {
+      .font-size-xl();
+    }
+    &-time {
+      opacity: .7;
+      margin-top: 10rpx;
+    }
+  }
+  &-addr {
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    margin-top: 54rpx;
+    .font-size();
+    .font-color-light2();
+    &-icon {
+      margin-top: 6rpx;
+      margin-right: 8rpx;
+    }
+  }
+}

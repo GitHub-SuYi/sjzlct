@@ -1,0 +1,42 @@
+<!-- 人脸采集 pages/face/reg-face.wxml -->
+<page-meta>
+  <navigation-bar title="人像采集" />
+</page-meta>
+<view class="page-container">
+  <view class="card-round">
+    <camera
+      mode="normal"
+      resolution="high"
+      device-position="{{cameraDir}}"
+      style="width: 100%;height: 750rpx;"
+      bindinitdone="onCameraReady"
+    />
+    <t-notice-bar t-class="face-notice" visible prefix-icon="null">
+      <view slot="content" class="face-notice-box">
+				<text class="face-notice-tip">1.采集前请保证周围光线良好；</text>
+				<text class="face-notice-tip">2.拍照时请持稳手机并保持人脸正对屏幕；</text>
+				<text class="face-notice-tip">3.请保证图像清晰、人脸完整；</text>
+				<text class="face-notice-tip">4.若不满足上述要求，可重新拍照，点击【确认】提交采集结果；</text>
+				<text class="face-notice-tip">5.若需切换摄像头，请点击左下方按钮切换。</text>
+      </view>
+    </t-notice-bar>
+    <view class="btn">
+      <t-button size="large" variant="plain" catchtap="chagneCameraDir">{{cameraDir==='front' ? '后置摄像头' : '前置摄像头'}}</t-button>
+      <t-button disabled="{{!cameraReady}}" theme="primary" size="large" variant="plain" catchtap="takePhoto">拍照并预览</t-button>
+    </view>
+  </view>
+</view>
+<t-popup 
+  visible="{{showPreviewPanel}}"
+  placement="bottom"
+  close-on-overlay-click="{{false}}"
+  bind:visible-change="onPreviewPancelChange"
+>
+  <view slot="content" class="preview">
+    <image class="preview-image" src="{{previewImgSrc}}" mode="aspectFit"></image>
+    <view class="btn">
+      <t-button size="large" variant="plain" catchtap="closePreview">重新拍照</t-button>
+      <t-button theme="primary" size="large" variant="plain" catchtap="postFace">确认</t-button>
+    </view>
+  </view>
+</t-popup>

@@ -1,0 +1,41 @@
+/* pkg-sign/pages/sign-count/weeks/weeks.wxss */
+@import "../../../../styles/var.less";
+
+.options {
+  height: 100rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &-item {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60rpx;
+    padding: 0 20rpx;
+    margin-right: 20rpx;
+    border-radius: 30rpx;
+    background-color: #ffffff;
+    .font-size();
+    .font-color();
+    &:last-child {
+      margin-right: 0px;
+    }
+    &.active {
+      background-color: @color-primary;
+      .font-color-reverse();
+    }
+  }
+}
+
+.days {
+  .font-size-s();
+  &.error {
+    color: @color-error;
+  }
+}
+
+.day-tag {
+  margin-right: 20rpx;
+}

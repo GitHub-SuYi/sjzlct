@@ -1,0 +1,33 @@
+/* pkg-message/components/message-file.wxss */
+@import "../../styles/var.less";
+
+.file {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  background-color: #ffffff;
+  padding: @margin-or-padding;
+  border-radius: 12rpx;
+  overflow: hidden;
+  &:active {
+    background-color: @color-gray-light;
+  }
+  &-icon {
+    color: #999999;
+    margin-right: 8rpx;
+  }
+  &-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &-name {
+    .font-size();
+    .font-color();
+  }
+  &-size {
+    .font-size-xs();
+    color: #999999;
+    margin-top: 8rpx;
+  }
+}

@@ -1,0 +1,6 @@
+<!--components/avatar/avatar.wxml-->
+<image
+  class="avatar avatar-class"
+  src="{{src || './default-avatar.png'}}"
+  mode="aspectFill"
+/>

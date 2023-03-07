@@ -1,0 +1,35 @@
+// 颜色
+@color-primary: #1890ff;
+@color-success: #2fc25b;
+@color-warning: #ff9700;
+@color-error: #f04864;
+@color-gray: #E5E5E5;
+@color-gray-light: fadeout(@color-gray, 20%);
+@color-gray-dark: fadein(@color-gray, 20%);
+@color-text: #333333;
+
+// 四周阴影
+.around-shadow(@color:rgba(11,60,96,0.13)) {
+  box-shadow: 0px 3px 10px 0px @color;
+}
+
+// 字体
+.font-size-xs { font-size: 20rpx; }
+.font-size-s { font-size: 24rpx; }
+.font-size { font-size: 28rpx; }
+.font-size-l { font-size: 32rpx; }
+.font-size-xl { font-size: 36rpx; }
+.font-color-light3 { color: @color-text + #333; }
+.font-color-light2 { color: @color-text + #222; }
+.font-color-light { color: @color-text + #111; }
+.font-color { color: @color-text; }
+.font-color-dark { color: @color-text - #111; }
+.font-color-dark2 { color: @color-text - #222; }
+.font-color-dark3 { color: @color-text - #333; }
+.font-color-reverse { color: #fff; }
+
+// 边距、圆角
+@margin-or-padding: 24rpx;
+@border-radius: 20rpx;
+.container-border-radius { border-radius: @border-radius; }
+.element-border-radius { border-radius: @border-radius * 0.6; }

@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "avatar": "../../components/avatar/avatar",
+    "message-text": "./message-text",
+    "message-image": "./message-image",
+    "message-file": "./message-file",
+    "message-location": "./message-location"
+  }
+}

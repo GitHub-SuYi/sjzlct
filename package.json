@@ -1,0 +1,12 @@
+{
+  "name": "hjtjz-shijiazhuang-mp",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.6.0"
+  }
+}

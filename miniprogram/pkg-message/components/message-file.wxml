@@ -1,0 +1,9 @@
+<!--pkg-message/components/message-file.wxml-->
+<view class="file" bindtap="openFile">
+  <t-icon class="file-icon" size="60rpx" name="{{icon}}" />
+  <view class="file-box">
+    <text class="file-name">{{name}}</text>
+    <text class="file-size">{{showSize}}</text>
+  </view>
+  <pg wx:if="{{showProgress}}" value="{{progressValue}}" label="{{progressLabel}}" />
+</view>

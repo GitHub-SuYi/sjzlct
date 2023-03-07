@@ -1,0 +1,11 @@
+<!--pages/tab-sign/sign.wxml-->
+<view class="sign">
+  <view class="sign-btn {{disabled ? 'disabled' : ''}}" catchtap="onTapSign">
+    <text class="sign-btn-text">{{ title }}</text>
+    <text class="sign-btn-time">{{ time }}</text>
+  </view>
+  <view class="sign-addr" wx:if="{{location.address}}">
+    <t-icon class="sign-addr-icon" name="location"></t-icon>
+    <text class="sign-addr-text">{{location.address}}</text>
+  </view>
+</view>

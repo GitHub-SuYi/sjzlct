@@ -1,0 +1,26 @@
+<!--pages/login/login.wxml-->
+<page-meta>
+  <navigation-bar title="登录" />
+</page-meta>
+<view class="page-container">
+  <text class="title">登录{{appName}}</text>
+  <text class="description">登录后进行签到、打卡</text>
+  <t-button
+    t-class="btn btn-login"
+    theme="primary"
+    icon="app"
+    size="large"
+    block
+    bind:tap="login"
+  >
+    微信快捷登录
+  </t-button>
+  <t-button
+    t-class="btn btn-back"
+    variant="text"
+    block
+    bind:tap="back"
+  >
+    返回上一页
+  </t-button>
+</view>

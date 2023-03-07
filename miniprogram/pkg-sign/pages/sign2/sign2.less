@@ -1,0 +1,71 @@
+/* pkg-sign/pages/sign2/sign2.wxss */
+@import "../../../styles/var.less";
+
+.sign-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &-left {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  &-avatar {
+    // in .sign-header-left
+    width: 100rpx;
+    height: 100rpx;
+    .element-border-radius();
+    margin-right: @margin-or-padding;
+  }
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-name {
+      .font-size-xl();
+      .font-color-dark2();
+      font-weight: bold;
+    }
+    &-tip {
+      .font-size();
+      .font-color-light3();
+      // &-rule {
+      //   color: @color-primary;
+      // }
+    }
+  }
+  &-right {
+    width: 110rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    &-icon {
+      scale: 0.8;
+    }
+  }
+}
+
+.sign-main {
+  padding-top: 160rpx;
+}
+
+.sign-remark {
+  margin-top: 120rpx;
+  &-preset {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .btn {
+      margin: 0 20rpx 20rpx 0;
+    }
+  }
+  &-input {
+    border: 1px solid @color-gray-dark;
+    background-color: @color-gray-light;
+    width: 570rpx;
+    height: 100rpx;
+    .font-size();
+    padding: @margin-or-padding;
+  }
+}

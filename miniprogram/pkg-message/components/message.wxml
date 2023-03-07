@@ -1,0 +1,14 @@
+<!-- pkg-message/components/message.wxml 消息列表中的每一项消息 -->
+
+<view class="u-class message {{mine ? 'message-mine' : ''}}">
+  <avatar avatar-class="message-avatar" src=""></avatar>
+  <view class="message-content">
+    <text class="message-nickname">张三丰hello world</text>
+    <message-text mine="{{mine}}" text="中文 English 12345中文" />
+    <!-- <message-image src="http://132.232.253.210:9011/Images/sifaa.png" /> -->
+    <!-- <message-file name="file-name.dll" size="1024" type="xlsx" url="https://qiniuyun.handongchina.com/132com.
+    handongchina.sjtjg.1.1.2.debug132.apk" /> -->
+    <!-- <message-file name="file-name.dll" size="1024" type="xlsx" url="https://qiniuyun.handongchina.com/images/jg-133/2020/07/15/113348/Fow-2AFi1o6l84iI3RI8-mkXQRbc.jpg" /> -->
+    <!-- <message-location lng="103.86667" lat="30.50067" address="浣花溪公园" /> -->
+  </view>
+</view>

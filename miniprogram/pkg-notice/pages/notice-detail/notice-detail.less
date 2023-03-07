@@ -1,0 +1,45 @@
+@import '../../../styles/var.less';
+
+page { background-color: #fff; }
+.head-box {
+  .title{
+    .font-size-xl();
+    font-weight: bold;
+  }
+  .company{
+    margin-top: 20rpx;
+    .font-color-light3();
+    .font-size-s();
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.rich-text-box {
+  margin-top: 40rpx;
+}
+
+.accessory-box{
+  margin-top: 100rpx;
+  .accessory-title{
+    font-weight: 600;
+  }
+  .accessory-item{
+    display: flex;
+    flex-direction: row;
+    margin: 28rpx 0;
+    .file-icon {
+      margin-top: 8rpx;
+      margin-right: 10rpx;
+    }
+    .file-name {
+      flex: 1;
+      .font-size-l();
+      &:active {
+        opacity: 0.8;
+        text-decoration:underline;
+      }
+    }
+  }
+}
+

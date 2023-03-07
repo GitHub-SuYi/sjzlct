@@ -1,0 +1,46 @@
+<!--components/calendar/calendar.wxml-->
+<view hidden="{{hidden}}" class="calendar classes">
+  <view class="calendar-header">
+    <view wx:if="{{showHeader}}" class="calendar-header-tool">
+      <view class="calendar-header-tool-item" data-offset="-1" bind:tap="changeMonth">
+        <text>◀</text>
+      </view>
+      <text class="calendar-header-tool-name">{{headerMonth}}</text>
+      <view class="calendar-header-tool-item" data-offset="1" bind:tap="changeMonth">
+        <text>▶</text>
+      </view>
+    </view>
+    <view class="calendar-header-weekday">
+      <view class="calendar-header-weekday-name" wx:for="{{weekdayNames}}" wx:key="index">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="calendar-body">
+    <view class="calendar-week" wx:for="{{cells}}" wx:for-item="week" wx:for-index="wi" wx:key="wi">
+      <view
+        class="calendar-week-cell"
+        wx:for="{{week}}"
+        wx:for-item="day"
+        wx:for-index="di"
+        wx:key="timestamp"
+        data-week-index="{{wi}}"
+        data-day-index="{{di}}"
+        data-disabled="{{day.disabled ? 1 : 0}}"
+        bind:tap="onTapDate"
+      >
+        <text class="calendar-week-day day-class {{day.timestamp===timestamp ? 'active day-selected-class' : ''}} {{day.day === 6 || day.day === 0 ? 'calendar-week-day-weekend day-weekend-class' : ''}} {{day.isCurrentMonth ? '' : 'calendar-week-day-othermonth' }} {{day.disabled ? 'disabled day-disabled-class' : ''}}">{{day.date}}</text>
+        <view class="calendar-week-extra">
+          <block wx:if="{{extraInfo[day.timestamp]}}">
+            <view
+              wx:if="{{extraInfo[day.timestamp].type==='dot'}}"
+              class="calendar-week-extra-dot"
+              style="{{extraInfo[day.timestamp].style}}"
+            ></view>
+            <!-- <text>11</text/> -->
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+/* pages/face/reg-face.wxss */
+@import "../../styles/var.less";
+
+.face-notice {
+  margin: 24rpx 0;
+  &-box {
+    display: flex;
+    flex-direction: column;
+  }
+  &-tip {
+    .font-size-s();
+  }
+}
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.preview {
+  width: 750rpx;
+  padding: 40rpx;
+  background-color: #ffffff;
+  border-top-left-radius: @border-radius;
+  border-top-right-radius: @border-radius;
+  &-image {
+    height: 800rpx;
+    margin-bottom: 40rpx;
+  }
+}

@@ -1,0 +1,42 @@
+<!-- pkg-sign/pages/sign-count.wxml 签到统计 -->
+<page-meta>
+  <navigation-bar title="签到统计" />
+</page-meta>
+<view class="page-container">
+  <view class="sign-header card-round">
+    <view class="sign-header-left">
+      <avatar avatar-class="sign-header-avatar" src="{{userAvatar}}" />
+      <view class="sign-header-info">
+        <text class="sign-header-info-name">{{userName}}</text>
+        <view class="sign-header-info-tip" catchtap="goSignRule">
+          <text>签到</text>
+          <text class="sign-header-info-tip-rule">(查看规则)</text>
+        </view>
+      </view>
+    </view>
+    <view class="sign-header-right">
+      <f-radio-group radio-group-class="sign-header-modes" bind:changed="onCountModelChanged">
+        <f-radio radio-class="sign-header-modes-item" radio-checked-class="sign-header-modes-item-checked" value="day" checked="{{mode === 'day'}}">
+          <text>日</text>
+        </f-radio>
+        <f-radio radio-class="sign-header-modes-item" radio-checked-class="sign-header-modes-item-checked" value="week" checked="{{mode === 'week'}}">
+          <text>周</text>
+        </f-radio>
+        <f-radio radio-class="sign-header-modes-item" radio-checked-class="sign-header-modes-item-checked" value="month" checked="{{mode === 'month'}}">
+          <text>月</text>
+        </f-radio>
+      </f-radio-group>
+    </view>
+  </view>
+  <view class="sign-main card-round">
+    <view class="sign-time">
+      <text class="sign-time-ym">{{year}}</text>
+      <view class="sign-time-detail">
+        <text class="sign-time-ym">{{date}}</text>
+      </view>
+    </view>
+    <days hidden="{{mode !== 'day'}}" bind:datechanged="onDateChanged" />
+    <weeks hidden="{{mode !== 'week'}}" bind:datechanged="onDateChanged" />
+    <weeks hidden="{{mode !== 'month'}}" mode="month" batch="{{8}}" bind:datechanged="onDateChanged" />
+  </view>
+</view>

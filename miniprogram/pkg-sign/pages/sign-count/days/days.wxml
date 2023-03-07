@@ -1,0 +1,71 @@
+<!--pkg-sign/pages/sign-count/days/days.wxml-->
+<!-- 签到统计：天视图 -->
+<view hidden="{{hidden}}">
+  <t-notice-bar t-class="sign-tips" visible prefix-icon="null">
+    <view slot="content" class="sign-tips-box">
+      <view class="sign-tips-item">
+        <view class="sign-tips-item-dot normal"></view>
+        <text class="sign-tips-item-text">全天打卡正常</text>
+      </view>
+      <view class="sign-tips-item">
+        <view class="sign-tips-item-dot"></view>
+        <text class="sign-tips-item-text">当天打卡存在异常</text>
+      </view>
+    </view>
+    <!-- <view slot="suffixIcon">
+      <t-icon name="close"></t-icon>
+    </view> -->
+  </t-notice-bar>
+  <calendar
+    extra="{{calendarExtra}}"
+    bind:changed="onSelectDate"
+    bind:date-create="onCalendarDateCreating"
+    bind:month-changed="onCalendarMonthChanged"
+  />
+  <view wx:if="{{sign.success}}" class="sign-summary">
+    <t-icon class="sign-summary-icon" name="chart-pie"></t-icon>
+    <text>正常:</text><text>{{normal}}</text><text>次</text><view class="sign-summary-split"></view>
+    <text>缺卡:</text><text class="{{missing > 0 ? 'error' : ''}}">{{missing}}</text><text>次</text><view class="sign-summary-split"></view>
+    <text>越界:</text><text class="{{cross > 0 ? 'error' : ''}}">{{cross}}</text><text>次</text><view class="sign-summary-split"></view>
+  </view>
+  <!-- <t-steps class="sign-step" current="2" layout="vertical" readonly> -->
+  <t-steps wx:if="{{sign.success}}" class="sign-step" layout="vertical" theme="dot" readonly>
+    <t-step-item
+      wx:for="{{sign.steps}}"
+      wx:key="start"
+      wx:for-item="step"
+      title="{{step.startMin + ' ~ ' + step.endMin}}"
+    >
+      <view slot="content">
+        <t-tag wx:if="{{step.step === 0}}" shape="round" variant="light" theme="default">待打卡</t-tag>
+        <t-tag wx:elif="{{step.step === 1}}" shape="round" variant="light" theme="primary">打卡中...</t-tag>
+        <t-tag wx:elif="{{step.step === 2}}" shape="round" variant="light" theme="success">
+          <text>已打卡 </text>
+          <text>{{step.signTime}}</text>
+        </t-tag>
+        <t-tag wx:elif="{{step.step === 3}}" shape="round" variant="light" theme="warning">
+          <text>越界打卡 </text>
+          <text>{{step.signTime}}</text>
+        </t-tag>
+        <t-tag wx:elif="{{step.step === 4}}" shape="round" variant="light" theme="danger">缺卡</t-tag>
+        <t-tag wx:else shape="round" variant="light" theme="default">{{step.statusLabel}}</t-tag>
+        <view wx:if="{{step.address}}"><text>{{step.address}}</text></view>
+      </view>
+    </t-step-item>
+    <!-- <t-step-item title="10:00 ~ 11:00">
+      <view slot="content">
+        <t-tag shape="round" variant="light" theme="error">缺卡</t-tag>
+      </view>
+    </t-step-item>
+    <t-step-item title="13:00 ~ 14:00">
+      <view slot="content">
+        <t-tag shape="round" variant="light" theme="primary">打卡中...</t-tag>
+      </view>
+    </t-step-item>
+    <t-step-item title="15:00 ~ 18:00">
+      <view slot="content">
+        <t-tag shape="round" variant="light" theme="default">待打卡</t-tag>
+      </view>
+    </t-step-item> -->
+  </t-steps>
+</view>

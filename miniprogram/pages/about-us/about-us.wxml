@@ -1,0 +1,12 @@
+<page-meta>
+  <navigation-bar
+    title="关于我们"
+  />
+</page-meta>
+<view class="page-container">
+  <view class="card-round">
+    <t-cell title="服务商" note="{{orgName}}" />
+    <t-cell title="服务电话" hover note="{{phone}}" arrow catchtap="callPhone" />
+    <t-cell title="服务介绍" hover note="点击查看" bordered="{{false}}" arrow catchtap="goOrgWebsite"/>
+  </view>
+</view>

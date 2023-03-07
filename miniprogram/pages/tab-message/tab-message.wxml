@@ -1,0 +1,36 @@
+<!--pages/tab-message/tab-message.wxml-->
+<page-meta>
+  <navigation-bar title="消息" />
+</page-meta>
+<view>
+  <t-cell hover wx:for="{{chatList}}" wx:key="pushId" data-index="{{index}}" bindtap="goChat">
+    <avatar slot="image" avatar-class="user-avatar" src="{{item.avatar}}" />
+    <view slot="title" class="user-info">
+      <text class="user-info-name">{{item.name}}</text>
+      <text class="user-info-time">{{item.latestMsgTime}}</text>
+    </view>
+    <view slot="description" class="user-msg">
+      <text class="user-msg-text" slot="description">{{item.latestMsg}}</text>
+    </view>
+  </t-cell>
+  <!-- <t-cell hover>
+    <avatar slot="image" avatar-class="user-avatar" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
+    <view slot="title" class="user-info">
+      <text class="user-info-name">张三丰社矫测试张三丰社矫测试张三丰社矫测试张三丰社矫测试</text>
+      <text class="user-info-time">23:22</text>
+    </view>
+    <view slot="description" class="user-msg">
+      <text class="user-msg-text" slot="description">组件类名</text>
+    </view>
+  </t-cell>
+  <t-cell hover>
+    <avatar slot="image" avatar-class="user-avatar" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
+    <view slot="title" class="user-info">
+      <text class="user-info-name">张三丰社矫测试张三丰社矫测试张三丰社矫测试张三丰社矫测试</text>
+      <text class="user-info-time">23:22</text>
+    </view>
+    <view slot="description" class="user-msg">
+      <text class="user-msg-text" slot="description">　</text>
+    </view>
+  </t-cell> -->
+</view>

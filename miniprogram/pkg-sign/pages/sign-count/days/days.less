@@ -1,0 +1,47 @@
+/* pkg-sign/pages/sign-count/days/days.wxss */
+@import "../../../../styles/var.less";
+// .sign-step {
+//   padding: 20rpx;
+// }
+.sign-tips {
+  margin-bottom: 40rpx;
+  &-box {
+    .font-size-s();
+  }
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &-dot {
+      width: 8rpx;
+      height: 8rpx;
+      border-radius: 4rpx;
+      background-color: @color-warning;
+      margin-right: 10rpx;
+      &.normal {
+        background-color: @color-primary;
+      }
+    }
+    &-text {
+      .font-color-light3();
+    }
+  }
+}
+
+.sign-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 50rpx 0 30rpx;
+  .font-size();
+  &-icon {
+    margin-right: 10rpx;
+    .font-color-light3();
+  }
+  &-split {
+    margin-right: 20rpx;
+  }
+  .error {
+    color: @color-error;
+  }
+}

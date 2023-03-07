@@ -1,0 +1,29 @@
+<page-meta>
+  <navigation-bar title="公告" />
+</page-meta>
+<view class="page-container">
+  <view class="head-box">
+    <t-search class="ipt" value="{{searchName}}" placeholder="输入关键字查询" bind:submit="doSearch" bind:clear="doSearch" />
+  </view>
+  <view class="data-card-box">
+    <view class="card-item-box"
+      wx:for="{{list}}"
+      wx:key="id"
+      data-index="{{index}}"
+      catchtap="goNoticeDetail"
+    >
+      <view class="title-box">
+        <text class="title-p">{{item.title}}</text>
+        <text class="time">{{item.pubTime}}</text>
+      </view>
+      <view class="title-box">
+        <text>{{item.jgmc}}</text>
+        <view class="details">
+          <text>查看详情</text>
+          <t-icon name="chevron-right" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <t-back-top theme="round" />
+</view>

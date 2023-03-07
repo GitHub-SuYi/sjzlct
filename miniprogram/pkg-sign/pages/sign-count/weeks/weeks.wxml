@@ -1,0 +1,57 @@
+<!--pkg-sign/pages/sign-count/weeks/weeks.wxml-->
+<view hidden="{{hidden}}">
+  <scroll-view
+    class="options"
+    scroll-into-view="op-{{scrollToItem}}"
+    scroll-x
+    enable-flex
+    scroll-with-animation
+    bindscrolltoupper="loadMoreOptions"
+  >
+    <view
+      wx:for="{{ops}}"
+      wx:key="start"
+      id="op-{{item.start}}"
+      class="options-item {{selectItem.start === item.start ? 'active' : ''}}"
+      data-start="{{item.start}}"
+      data-end="{{item.end}}"
+      bindtap="onTapToSelect"
+    >
+        <text>{{item.label}}</text>
+    </view>
+  </scroll-view>
+  <t-collapse expand-icon bind:change="onCountsPanelChanged">
+    <t-collapse-panel header="正常天数" value="normal">
+      <view slot="content" wx:if="{{countDates.normal}}">
+        <t-tag t-class="day-tag" wx:for="{{countDates.normal}}" wx:key="*this">{{item}}</t-tag>
+      </view>
+      <view slot="header-right-content">
+        <text class="days">{{counts.normal}}天</text>
+      </view>
+    </t-collapse-panel>
+    <t-collapse-panel header="未打卡天数" value="missingAllDay">
+      <view slot="content" wx:if="{{countDates.missingAllDay}}">
+        <t-tag t-class="day-tag" wx:for="{{countDates.missingAllDay}}" wx:key="*this">{{item}}</t-tag>
+      </view>
+      <view slot="header-right-content">
+        <text class="days {{counts.missingAllDay?'error':''}}">{{counts.missingAllDay}}天</text>
+      </view>
+    </t-collapse-panel>
+    <t-collapse-panel header="缺卡" value="missing">
+      <view slot="content" wx:if="{{countDates.missing}}">
+        <t-tag t-class="day-tag" wx:for="{{countDates.missing}}" wx:key="*this">{{item}}</t-tag>
+      </view>
+      <view slot="header-right-content">
+        <text class="days {{counts.missing?'error':''}}">{{counts.missing}}次</text>
+      </view>
+    </t-collapse-panel>
+    <t-collapse-panel header="越界" value="cross">
+      <view slot="content" wx:if="{{countDates.cross}}">
+        <t-tag t-class="day-tag" wx:for="{{countDates.cross}}" wx:key="*this">{{item}}</t-tag>
+      </view>
+      <view slot="header-right-content">
+        <text class="days {{counts.cross?'error':''}}">{{counts.cross}}次</text>
+      </view>
+    </t-collapse-panel>
+  </t-collapse>
+</view>

@@ -1,0 +1,36 @@
+/* pages/tab-message/tab-message.wxss */
+@import '../../styles/var.less';
+
+.user-avatar {
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 12rpx;
+}
+.user-msg {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &-text {
+    width: 540rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+.user-info {
+  width: 540rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &-name {
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &-time {
+    .font-size-s();
+    .font-color-light3();
+    margin-left: @margin-or-padding;
+  }
+}

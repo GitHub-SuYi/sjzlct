@@ -1,0 +1,70 @@
+<!--pages/tab-sign/tab-sign.wxml 签到 -->
+<page-meta>
+  <navigation-bar title="签到" />
+</page-meta>
+<view class="page-container">
+  <view class="sign-header card-round">
+    <view class="sign-header-left">
+      <avatar avatar-class="sign-header-avatar" src="{{userAvatar}}" />
+      <view class="sign-header-info">
+        <text class="sign-header-info-name">{{userName}}</text>
+        <view class="sign-header-info-tip" catchtap="goSignRule">
+          <text>签到</text>
+          <text class="sign-header-info-tip-rule">(查看规则)</text>
+        </view>
+      </view>
+    </view>
+    <view class="sign-header-right">
+      <t-button t-class-icon="sign-header-right-icon" icon="chart-pie" size="small" variant="outline" catchtap="goSignCount">统计</t-button>
+    </view>
+  </view>
+  <view class="sign-main card-round">
+    <!-- 签到组件 -->
+    <sign
+      title="签到"
+      disabled="{{!enableSign}}"
+      bind:sign="onTapSign"
+      bind:time-changed="onTimeChanged"
+    />
+    <!-- 签到进度 -->
+    <t-steps wx:if="{{sign.success}}" class="sign-step" current="{{signStepIndex}}" layout="vertical" readonly>
+      <t-step-item
+        wx:for="{{sign.steps}}"
+        wx:key="start"
+        wx:for-item="step"
+        title="{{step.startMin + ' ~ ' + step.endMin}}"
+      >
+        <view slot="content">
+          <t-tag wx:if="{{step.step === 0}}" shape="round" variant="light" theme="default">待打卡</t-tag>
+          <t-tag wx:elif="{{step.step === 1}}" shape="round" variant="light" theme="primary">打卡中...</t-tag>
+          <t-tag wx:elif="{{step.step === 2}}" shape="round" variant="light" theme="success">
+            <text>已打卡 </text>
+            <text>{{step.signTime}}</text>
+          </t-tag>
+          <t-tag wx:elif="{{step.step === 3}}" shape="round" variant="light" theme="warning">
+            <text>越界打卡 </text>
+            <text>{{step.signTime}}</text>
+          </t-tag>
+          <t-tag wx:elif="{{step.step === 4}}" shape="round" variant="light" theme="danger">缺卡</t-tag>
+          <t-tag wx:else shape="round" variant="light" theme="default">{{step.statusLabel}}</t-tag>
+          <view wx:if="{{step.address}}"><text>{{step.address}}</text></view>
+        </view>
+      </t-step-item>
+      <!-- <t-step-item title="10:00 ~ 11:00">
+        <view slot="content">
+          <t-tag shape="round" variant="light" theme="error">缺卡</t-tag>
+        </view>
+      </t-step-item>
+      <t-step-item title="13:00 ~ 14:00">
+        <view slot="content">
+          <t-tag shape="round" variant="light" theme="primary">打卡中...</t-tag>
+        </view>
+      </t-step-item>
+      <t-step-item title="15:00 ~ 18:00">
+        <view slot="content">
+          <t-tag shape="round" variant="light" theme="default">待打卡</t-tag>
+        </view>
+      </t-step-item> -->
+    </t-steps>
+  </view>
+</view>

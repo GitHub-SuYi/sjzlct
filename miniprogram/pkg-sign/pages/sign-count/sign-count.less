@@ -1,0 +1,81 @@
+/* 签到统计 pkg-sign/pages/sign-count.wxss */
+@import "../../../styles/var.less";
+
+.sign-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &-left {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  &-avatar {
+    // in .sign-header-left
+    width: 100rpx;
+    height: 100rpx;
+    .element-border-radius();
+    margin-right: @margin-or-padding;
+  }
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-name {
+      .font-size-xl();
+      .font-color-dark2();
+      font-weight: bold;
+    }
+    &-tip {
+      .font-size();
+      .font-color-light3();
+      &-rule {
+        color: @color-primary;
+      }
+    }
+  }
+  &-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  &-modes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: @color-gray-dark;
+    padding: 6rpx;
+    border-radius: 6rpx;
+    &-item {
+      // .font-size();
+      padding: 7rpx 16rpx;
+      border-radius: 6rpx;
+      .font-color-light();
+      &-checked {
+        .font-color-dark();
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+.sign-time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20rpx;
+  &-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50rpx;
+    margin-left: 20rpx;
+    padding-left: 20rpx;
+    border-left: 1px solid @color-gray;
+  }
+  &-ym {
+    .font-color();
+  }
+}

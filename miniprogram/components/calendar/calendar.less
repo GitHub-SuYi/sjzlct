@@ -1,0 +1,125 @@
+/* components/calendar/calendar.wxss */
+@color-primary: #1890ff;
+@color-header: #666;
+@color-day: #444;
+@color-day-active: #fff;
+
+.calendar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.calendar-header {
+  display: flex;
+  flex-direction: column;
+  &-tool {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    &-item {
+      width: 100rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+      color: fadeout(@color-day, 20%);
+      font-size: 24rpx;
+      &:active {
+        background-color: @color-day-active;
+        opacity: .7;
+      }
+    }
+    &-name {
+      flex: 1;
+      text-align: center;
+      color: @color-day;
+    }
+  }
+  &-weekday {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10rpx;
+    &-name {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 24rpx;
+      color: @color-header;
+      height: 60rpx;
+      text {
+        text-align: center;
+      }
+    }
+  }
+}
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-week {
+  display: flex;
+  flex-direction: row;
+  &-cell {
+    flex: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: @color-day;
+    height: 90rpx;
+  }
+  &-day {
+    border-radius: 30rpx;
+    align-self: center;
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    &:active {
+      background-color: #E5E5E5;
+    }
+    &.active {
+      background-color: @color-primary;
+      color: @color-day-active;
+      &:active {
+        background-color: darken(@color-primary, 5%);
+      }
+    }
+    &.disabled {
+      color: fadeout(@color-day, 40%);
+      &:active {
+        background-color: transparent !important;
+      }
+    }
+    &-weekend {
+      color: fadeout(@color-day, 30%);
+      // &.disabled {
+      //   color: fadeout(@color-day, 40%);
+      // }
+    }
+    &-othermonth:active {
+      background-color: transparent;
+    }
+  }
+  &-extra {
+    height: 35rpx;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    &-dot {
+      width: 8rpx;
+      height: 8rpx;
+      border-radius: 6rpx;
+      background-color: @color-primary;
+    }
+  }
+}

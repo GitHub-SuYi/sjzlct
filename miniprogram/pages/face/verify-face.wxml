@@ -1,0 +1,20 @@
+<!--pages/face/verify-face.wxml-->
+<view class="face">
+  <view class="face-camera-box">
+    <camera
+      class="face-camera"
+      mode="normal"
+      resolution="high"
+      device-position="{{cameraDir}}"
+      bindinitdone="onCameraReady"
+    />
+    <view wx:if="{{showCountdown}}" class="face-camera-countdown">
+      <text class="face-camera-countdown-num">{{countdown}}</text>
+      <text class="face-camera-countdown-tip">将人脸放入框内</text>
+    </view>
+  </view>
+  <view class="btn">
+    <t-button size="large" variant="plain" catchtap="chagneCameraDir">{{cameraDir==='front' ? '后置摄像头' : '前置摄像头'}}</t-button>
+    <t-button disabled="{{!cameraReady || !enableRetry}}" theme="primary" size="large" variant="plain" catchtap="retry">重新验证</t-button>
+  </view>
+</view>

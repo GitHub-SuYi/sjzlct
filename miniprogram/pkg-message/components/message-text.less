@@ -1,0 +1,17 @@
+/* pkg-message/components/message-text.wxss */
+@import "../../styles/var.less";
+
+.box {
+  padding: 16rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  &:active {
+    background-color: @color-gray-light;
+  }
+  &.mine {
+    background-color: lighten(@color-primary, 30%);
+    &:active {
+      background-color: lighten(@color-primary, 25%);
+    }
+  }
+}

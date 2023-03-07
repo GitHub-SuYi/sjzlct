@@ -1,0 +1,7 @@
+<!-- 签到规则 pkg-sign/pages/sign-rule/sign-rule.wxml -->
+<page-meta>
+  <navigation-bar title="签到规则" />
+</page-meta>
+<view class="page-container">
+  <rich-text nodes="{{ruleConten}}"></rich-text>
+</view>

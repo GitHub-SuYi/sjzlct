@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "sign": "../../components/sign/sign",
+    "avatar": "../../components/avatar/avatar",
+    "t-steps": "tdesign-miniprogram/steps/steps",
+    "t-step-item": "tdesign-miniprogram/steps/step-item",
+    "t-tag": "tdesign-miniprogram/tag/tag"
+  },
+  "enablePullDownRefresh": true
+}

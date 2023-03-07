@@ -1,0 +1,32 @@
+<!--pkg-message/pages/chat/chat.wxml-->
+<page-meta>
+  <navigation-bar title="{{chatName}}" />
+</page-meta>
+<view>
+  <view class="chat-msg" style="{{msgListBottom}}">
+    <message
+      u-class="chat-msg-item"
+      wx:for="{{50}}"
+      wx:key="index"
+      mine="{{index%2===0}}"
+    />
+  </view>
+  <view class="chat-tool">
+    <!-- <t-button t-class="chat-tool-file" theme="default" icon="folder" shape="circle" size="small" /> -->
+    <t-icon t-class="chat-tool-btn" size="40rpx" name="folder" />
+    <t-icon t-class="chat-tool-btn" size="40rpx" name="location" />
+    <textarea
+      class="chat-tool-input"
+      confirm-type="return"
+      show-confirm-bar="{{false}}"
+      cursor-spacing="20"
+      auto-height
+      fixed
+      hold-keyboard
+      bindlinechange="onMsgTextLineChanged"
+    ></textarea>
+    <t-button t-class="chat-tool-send" theme="primary" size="small">
+      发送
+    </t-button>
+  </view>
+</view>

@@ -1,0 +1,167 @@
+<!-- Tab: 首页 -->
+<page-meta>
+  <navigation-bar
+    title="{{pageTitle}}"
+  />
+</page-meta>
+<view>
+  <!-- Banner -->
+  <swiper wx:if="{{banner.length > 0}}" class="banner" indicator-dots>
+    <swiper-item wx:for="{{banner}}" wx:key="*this">
+      <image src="{{item}}" class="banner-img" />
+    </swiper-item>
+  </swiper>
+  <!-- 功能按钮 -->
+  <view class="fn-button">
+    <view class="fn-button-item" bind:tap="goSign">
+      <image class="fn-button-item-icon" src="../../assets/tab-home/btn-sign.png" mode="heightFix"></image>
+      <text class="fn-button-item-text">签到</text>
+    </view>
+    <view class="fn-button-item" bind:tap="goSign2">
+      <image class="fn-button-item-icon" src="../../assets/tab-home/btn-sign2.png" mode="heightFix"></image>
+      <text class="fn-button-item-text">主动签到</text>
+    </view>
+    <view class="fn-button-item" bindtap="goMessage">
+      <image class="fn-button-item-icon" src="../../assets/tab-home/btn-msg.png" mode="heightFix"></image>
+      <text class="fn-button-item-text">消息</text>
+    </view>
+    <view class="fn-button-item" bind:tap="goAnnouncement">
+      <image class="fn-button-item-icon" src="../../assets/tab-home/btn-notice.png" mode="heightFix"></image>
+      <text class="fn-button-item-text">公告</text>
+    </view>
+  </view>
+  <view class="page-container">
+    <!-- 签到提示卡片 -->
+    <view class="card">
+      <view class="card-header">
+				<image class="card-header-icon" src="../../assets/tab-home/card-sign.png" mode="heightFix"></image>
+				<text class="card-header-text">今日签到</text>
+			</view>
+      <view wx:if="{{isGuest}}" class="card-body">
+        <t-empty icon="info-circle-filled" description="登录后查看你的今日签到信息">
+          <t-button slot="action" theme="primary" catchtap="goLogin">登录查看</t-button>
+        </t-empty>
+      </view>
+      <view wx:elif="{{sign.success}}" class="card-body">
+        <!-- 今日签到进度条 -->
+        <view class="flex">
+          <!-- <view class="sign-time">
+            <view class="sign-time-item">
+              <text class="sign-time-item-start">08:00</text>
+            </view>
+            <view class="sign-time-item">
+              <text class="sign-time-item-start">08:00</text>
+              <text class="sign-time-item-end">09:00</text>
+            </view>
+            <view class="sign-time-item">
+              <text class="sign-time-item-start">08:00</text>
+            </view>
+          </view>
+          <view class="sign-bar">
+            <view class="sign-bar-progress">
+              <view class="sign-bar-progress-item">
+                <view class="sign-bar-progress-item-half active"></view>
+                <view class="sign-bar-progress-item-half active"></view>
+              </view>
+              <view class="sign-bar-progress-item">
+                <view class="sign-bar-progress-item-half active"></view>
+                <view class="sign-bar-progress-item-half active"></view>
+              </view>
+              <view class="sign-bar-progress-item">
+                <view class="sign-bar-progress-item-half"></view>
+                <view class="sign-bar-progress-item-half"></view>
+              </view>
+            </view>
+            <view class="sign-bar-dot">
+              <view class="sign-bar-dot-item error"></view>
+              <view class="sign-bar-dot-item active"></view>
+              <view class="sign-bar-dot-item success"></view>
+            </view>
+          </view>
+          <view class="sign-state">
+            <text class="sign-state-text error">缺卡</text>
+            <text class="sign-state-text active">打卡中...</text>
+            <text class="sign-state-text success">已打卡</text>
+          </view> -->
+          <view class="sign-time">
+            <view class="sign-time-item" wx:for="{{sign.steps}}" wx:key="startMin" wx:for-item="step">
+              <text class="sign-time-item-start">{{step.signTime || step.startMin}}</text>
+              <text class="sign-time-item-end" wx:if="{{step.current}}">{{step.endMin}}</text>
+            </view>
+          </view>
+          <view class="sign-bar">
+            <view class="sign-bar-progress">
+              <view class="sign-bar-progress-item" wx:for="{{sign.steps}}" wx:key="startMin" wx:for-item="step">
+                <view class="sign-bar-progress-item-half {{step.step >= 1 ? 'active' : ''}}"></view>
+                <view class="sign-bar-progress-item-half {{step.step >= 2 ? 'active' : ''}}"></view>
+              </view>
+            </view>
+            <view class="sign-bar-dot">
+              <view wx:for="{{sign.steps}}" wx:key="startMin" class="sign-bar-dot-item {{item.status}}"></view>
+            </view>
+          </view>
+          <view class="sign-state">
+            <text wx:for="{{sign.steps}}" wx:key="startMin" class="sign-state-text {{item.status}}">{{item.statusLabel}}</text>
+          </view>
+        </view>
+        <!-- 签到提示 -->
+        <view class="sign-msg">
+          <block wx:for="{{sign.tips}}" wx:for-item="tip" wx:key="state">
+            <!-- 0: 未到打卡时间 -->
+            <view class="sign-msg-item" wx:if="{{tip.state === 0}}">
+              <view class="sign-msg-dot"></view>
+              <view class="sign-msg-box">
+                <text class="sign-msg-box-text">距下次打卡还有 </text>
+                <text class="sign-msg-box-text lg" wx:if="{{tip.data.hours}}">{{tip.data.hours}}</text>
+                <text class="sign-msg-box-text" wx:if="{{tip.data.hours}}"> 小时 </text>
+                <text class="sign-msg-box-text lg">{{tip.data.minutes}}</text>
+                <text class="sign-msg-box-text"> 分钟</text>
+              </view>
+              <view class="sign-msg-btn" bind:tap="goSign">
+                <text class="sign-msg-btn-text">去签到</text>
+              </view>
+            </view>
+            <!-- 1: 打卡中（还未打卡） -->
+            <view class="sign-msg-item" wx:elif="{{tip.state === 1}}">
+              <view class="sign-msg-dot"></view>
+              <view class="sign-msg-box">
+                <text class="sign-msg-box-text">距本次打卡结束还有 </text>
+                <text class="sign-msg-box-text lg" wx:if="{{tip.data.hours}}">{{tip.data.hours}}</text>
+                <text class="sign-msg-box-text" wx:if="{{tip.data.hours}}"> 小时 </text>
+                <text class="sign-msg-box-text lg">{{tip.data.minutes}}</text>
+                <text class="sign-msg-box-text"> 分钟</text>
+              </view>
+              <view class="sign-msg-btn" bind:tap="goSign">
+                <text class="sign-msg-btn-text">去签到</text>
+              </view>
+            </view>
+            <!-- 4: 上次缺卡 -->
+            <view class="sign-msg-item" wx:elif="{{tip.state === 4}}">
+              <view class="sign-msg-dot"></view>
+              <view class="sign-msg-box">
+                <text class="sign-msg-box-text">{{tip.data}}</text>
+              </view>
+              <view class="sign-msg-btn" bind:tap="goSign2">
+                <text class="sign-msg-btn-text">去补卡</text>
+              </view>
+            </view>
+            <!-- 纯文本消息 -->
+            <view class="sign-msg-item" wx:if="{{tip.plainText}}">
+              <view class="sign-msg-dot"></view>
+              <view class="sign-msg-box">
+                <text class="sign-msg-box-text">{{tip.data}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view wx:else class="card-body">
+        <t-empty icon="info-circle" description="今天不需要签到~" />
+      </view>
+      <view class="card-footer" catchtap="goSignCount">
+        <text class="home-card-footer-text">查看更多签到统计</text>
+        <t-icon name="chevron-right"></t-icon>
+      </view>
+    </view>
+  </view>
+</view>

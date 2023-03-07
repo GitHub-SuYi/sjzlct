@@ -1,0 +1,24 @@
+/* pkg-message/components/message-location.wxss */
+@import "../../styles/var.less";
+
+.lct {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12rpx;
+  background-color: #ffffff;
+  overflow: hidden;
+  &-active {
+    background-color: @color-gray-dark;
+  }
+  &-addr {
+    padding: 20rpx 16rpx;
+    .font-size();
+  }
+  &-map {
+    width: 200px;
+    height: 100px;
+    background-color: @color-gray-dark;
+  }
+}

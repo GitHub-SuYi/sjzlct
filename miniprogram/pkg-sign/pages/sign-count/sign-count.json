@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "f-radio": "../../../components/radio/radio",
+    "f-radio-group": "../../../components/radio/radio-group",
+    "days": "./days/days",
+    "weeks": "./weeks/weeks",
+    "avatar": "../../../components/avatar/avatar"
+  }
+}
